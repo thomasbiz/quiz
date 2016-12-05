@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title>Quiz</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/sk-folding-cube.css" type="text/css" />
+        <link rel="stylesheet" href="css/vue-animate.min.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body ontouchstart="">
+        <div class="container">
+            <div id="app">
+                <div v-if="!team_id">
+                    <h3>Choose your team</h3>
+                    <div v-for="team in teams" class="team-card">
+                        <a href="#" class="not-a-link" :id="team.id" @click.prevent="onClickTeam"></a>
+                        {{ team.name }}
+                        <ul><li v-for="member in team.members">{{ member }}</li></ul>
+                    </div>
+                </div>
+                <div v-if="team_id">
+                    <h3>Setup</h3>
+                    <label for="name">Team name</label>
+                    <input type="text" id="name" v-model="name" />
+                    <ul><li v-for="member in members">{{ member }}</li></ul>
+                    <img v-if="image" v-bind:src="image" style="max-width: 200px;"></img>
+                    <input v-if="!image && !uploading" type="file" id="image" accept="image/*" name="image" @change="onChange" class="image-upload" />
+                    <label v-if="!image && !uploading" for="image"><i class="material-icons">camera_enhance</i>Snap a pic!</label>
+                    <div v-if="uploading" class="sk-folding-cube">
+                        <div class="sk-cube1 sk-cube"></div>
+                        <div class="sk-cube2 sk-cube"></div>
+                        <div class="sk-cube4 sk-cube"></div>
+                        <div class="sk-cube3 sk-cube"></div>
+                    </div>
+                    <button v-if="image && !uploading" class="button" @click="onSave">Save</button>
+                    <button class="button" @click="onBack">Back</button>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="js/signup.js"></script>
+    </body>
+</html>
+

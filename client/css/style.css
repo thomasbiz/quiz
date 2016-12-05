@@ -1,0 +1,235 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #1abc9c;
+    color: white;
+    font-family: 'Helvetica', sans-serif;
+    letter-spacing: 1px;
+}
+
+.container {
+    margin: 0px auto;
+    width: 320px;
+    text-align: center;
+}
+
+.tv-container {
+    margin: 0px auto;
+    width: 70%;
+    text-align: center;
+}
+
+input[type=text] {
+    display: block;
+    border: none;
+    border-bottom: solid 1px white;
+    background: inherit;
+    color: white;
+    width: 220px;
+    margin: 10px auto;
+    padding: 10px;
+    padding-bottom: 2px;
+    height: 25px;
+    transition: ease-in-out, height .2s ease-in-out;
+}
+
+input[type=text]:focus { 
+    background: #1aa88c;
+    outline: none;
+    height: 40px;
+}
+
+h3 {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+li {
+    list-style: none;
+    text-align: left;
+}
+
+.button {
+    letter-spacing: 1px;
+    width: 90%;
+    height: 75px;
+    text-decoration: none;
+    border-style: none;
+    color: white;
+    background-color: #222;
+    /*background-color: #5F128C;*/
+    font-size: 12pt;
+    margin: 0px;
+    padding: 0px 30px 0px 30px;
+    border: none;
+    outline:none;
+    transition-duration: 0.4s;
+    letter-spacing: 1px;
+    border-bottom: 1px solid black;
+    position:relative;
+}
+
+.button-selected {
+    color: #1abc9c;
+}
+
+.checkmark {
+    font-size: 50px !important;
+}
+
+.submit-div
+{
+    margin-top: 20px;
+}
+
+.media-image {
+    max-width:100% !important;
+    height: 100px;
+    display:block;
+    margin: 0px auto;
+    margin-bottom: 10px;
+}
+
+.image-upload {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;    
+}
+
+.image-upload + label {
+    width: 90%;
+    height: 75px;
+    background-color: #222;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.image-upload + label > .material-icons {
+    vertical-align: middle;
+    padding-bottom: 3px;
+    padding-right: 5px;
+}
+
+.image-upload + label:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.team-card {
+    width: 100%;
+    height: 150px;
+    text-align: left;
+    position: relative;
+    padding-left: 30px;
+}
+
+.team-card li {
+    display: block;
+}
+
+.not-a-link {
+    text-decoration: none; 
+    color: inherit;
+}
+
+a.not-a-link {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
+
+.teams {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.option {
+    width: 250px;
+    height: auto;
+}
+
+
+.team-col {
+    position: relative;
+    width: 150px;
+}
+
+.team {
+    margin: 5px;
+    float: left;
+}
+
+.team p {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    z-index: 100;
+    margin: 0;
+}
+
+.team .checkmark {
+    position: absolute;
+    z-index: 1;
+    font-size: 150px !important;
+}
+
+.score-bar {
+    position: absolute;
+    background: white;
+    top: 0;
+    width: 152px;
+    transition: height 0.4s;
+}
+
+.score-bar p {
+    width: 100%;
+    text-align: center;
+    color: #1abc9c;
+}
+
+.thumbnail {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border: 1px solid white;
+}
+
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.picture-gradient {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(
+        to bottom, 
+        rgba(64,64,64,0) 0%, 
+        rgba(64,64,64,0) 60%, 
+        rgba(64,64,64,1) 100%
+    ); 
+}

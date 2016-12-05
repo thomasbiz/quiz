@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title>Quiz</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/sk-folding-cube.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        
+        <div id="app">
+            <div class="tv-container">
+                {{ minutesLeft }}:{{ secondsLeft }}
+                <h1>{{ question }}</h1>
+                <img v-if="image" v-bind:src="image"></img>
+                <iframe v-if="youtube" width="560" height="315" v-bind:src="youtube" frameborder="0"></iframe>
+                <div v-for="option in options" class="option">{{ option }}</div>
+            </div>
+            
+            <div class="teams">
+                <div v-for="team in teams" class="team">
+                    <div class="team-col">
+                        <div v-if="showScores" class="score-bar" v-bind:style="{ height: getScoreHeight(team.id) + 'px', marginTop: '-' + getScoreHeight(team.id) + 'px' }">
+                            <p>{{ getScore(team.id) }}</p>
+                        </div>
+                        <div class="thumbnail">
+                            <p>{{ team.name }}</p>
+                            <i v-if="hasAnswered(team.id)" class="material-icons checkmark">done</i>
+                            <div v-if="team.photo != ''" class="picture-gradient"></div>
+                            <img v-if="team.photo != ''" v-bind:src="team.photo" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="js/tv.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title>Quiz</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/sk-folding-cube.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body ontouchstart="">
+        <div class="container">
+            <div id="app">
+                <div v-if="state == QuizStates.WAITING" style="margin-top: 150px">
+                    <h3 v-if="!question_number">Waiting for quiz to begin..</h3>
+                    <div class="sk-folding-cube">
+                        <div class="sk-cube1 sk-cube"></div>
+                        <div class="sk-cube2 sk-cube"></div>
+                        <div class="sk-cube4 sk-cube"></div>
+                        <div class="sk-cube3 sk-cube"></div>
+                    </div>
+                    <p>Why not <a href="http://festify.us/3224489" target="_none">queue some songs</a> while you wait?</p>
+                </div>
+                <div v-else>
+                    <h3>Question {{ question_number }}</h3>
+                    <h3>{{ question }}</h3>
+                    <h3>Time {{ minutesLeft }}:{{ secondsLeft }}</h3>
+                    <button v-for="(o, index) in options" @click.prevent="select" class="button" v-bind:id="index" v-bind:class="index == answer_id ? 'button-selected' : ''">{{ o }}</button>
+                    <div class="submit-div">
+                        <button v-if="state == QuizStates.SELECTED && timeLeft > 0" @click.prevent="submit" class="button button-submit">Submit</button>
+                        <div v-if="state == QuizStates.SUBMITTING" class="sk-folding-cube">
+                            <div class="sk-cube1 sk-cube"></div>
+                            <div class="sk-cube2 sk-cube"></div>
+                            <div class="sk-cube4 sk-cube"></div>
+                            <div class="sk-cube3 sk-cube"></div>
+                        </div>
+                        <div v-if="state == QuizStates.SUBMITTED">
+                            <i class="material-icons checkmark">done</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="js/client.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title>Quiz</title>
+        <link rel="stylesheet" href="css/admin.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body ontouchstart="">
+        <div class="container">
+            <div id="app">
+                <div v-for="team in teams" v-bind:id="team.id">
+                    ID: {{ team.id }} Name: {{ team.name }} - Connections: {{ team.connections }} - Score: {{ team.score }}
+                </div>
+                <div v-for="answer in answers">
+                    Team-id: {{ answer.team_id }}
+                    Question-id: {{ answer.question_id }}
+                    Answer-id: {{ answer.answer_id }}
+                    Time: {{ answer.time }}
+                </div>
+                <button v-if="current_question+1 < questions.length" @click="onClickNext">Next question</button>
+            </div>
+        </div>
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="js/admin.js"></script>
+    </body>
+</html>
+
